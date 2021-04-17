@@ -1,0 +1,14 @@
+.Contacts {
+  text-align: center;
+}
+
+.ContactsList {
+  margin-left: auto;
+  margin-right: auto;
+
+  width: 50px;
+}
+
+.Item {
+  margin-left: -140px;
+}
