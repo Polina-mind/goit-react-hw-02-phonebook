@@ -9,27 +9,38 @@ class App extends Component {
     name: '',
   };
 
-  // onInputName = event => {
-  //   const inputName = event.currentTarget.textContent;
-  //   console.log(event.target);
+  onInputChange = event => {
+    const inputName = event.currentTarget.value;
+    this.setState({ name: inputName });
 
-  //   this.setState(prevState => {
-  //     return {
-  //       contacts: prevState.push({ id: 2, name: inputName }),
-  //       name: inputName,
-  //     };
-  //   });
-  // };
+    // this.setState(prevState => {
+    //   return {
+    //     contacts: prevState.push({ id: 2, name: inputName }),
+    //     name: inputName,
+    //   };
+    // });
+  };
+
+  onInputNumber = event => {
+    const inputNumber = event.currentTarget.value;
+    this.setState({ number: inputNumber });
+  };
 
   render() {
-    const { contacts, name } = this.state;
+    const { contacts, name, number } = this.state;
     console.log(this.state);
 
     return (
       <>
         <h2 className="Title">Phonebook</h2>
 
-        <InputForm onInputName={this.onInputName}></InputForm>
+        <InputForm
+          name={name}
+          number={number}
+          onInputChange={this.onInputChange}
+          onInputNumber={this.onInputNumber}
+          onInputName={this.onInputName}
+        ></InputForm>
 
         <h2 className="Title">Contacts</h2>
 

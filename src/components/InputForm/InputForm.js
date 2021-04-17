@@ -2,13 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './InputForm.css';
 
-const InputForm = ({ onInputName }) => {
+const InputForm = ({
+  name,
+  number,
+  onInputName,
+  onInputChange,
+  onInputNumber,
+}) => {
   return (
     <form className="Form">
       <label className="Label">
         Name
         <input
           className="Input"
+          value={name}
+          onChange={onInputChange}
           type="text"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -16,6 +24,20 @@ const InputForm = ({ onInputName }) => {
           required
         />
       </label>
+
+      <label className="Label">
+        Number
+        <input
+          className="Input"
+          value={number}
+          onChange={onInputNumber}
+          // type="text"
+          name="number"
+          // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          // required
+        />
+      </label>
+
       <button className="Button" type="submit" onClick={onInputName}>
         Add contact
       </button>
