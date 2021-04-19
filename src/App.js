@@ -60,15 +60,15 @@ class App extends Component {
 
   onInputFilter = event => {
     const filterInputValue = event.currentTarget.value;
-    console.log(filterInputValue);
 
-    // const newContacts = this.state.contacts.filter(
-    //   contact => contact.id !== id,
-    // );
+    const filteredContacts = this.state.contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filterInputValue),
+    );
+    console.log(filteredContacts);
 
-    // this.setState({
-    //   contacts: [...newContacts],
-    // });
+    this.setState({
+      contacts: [...filteredContacts],
+    });
   };
 
   render() {
