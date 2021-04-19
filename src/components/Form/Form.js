@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import InputForm from '../InputForm';
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 
 class Form extends Component {
   state = {
@@ -17,7 +17,7 @@ class Form extends Component {
     event.preventDefault();
 
     this.props.onSubmit(this.state);
-    console.log(this.state);
+    // console.log(this.state);
     this.reset();
   };
 

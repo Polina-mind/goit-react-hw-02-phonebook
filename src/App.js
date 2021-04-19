@@ -7,7 +7,12 @@ import './App.css';
 
 class App extends Component {
   state = {
-    contacts: [],
+    contacts: [
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ],
     name: '',
   };
 
@@ -39,6 +44,19 @@ class App extends Component {
     }));
   };
 
+  deleteContact = event => {
+    event.preventDefault();
+    const id = event.currentTarget.id;
+
+    const newContacts = this.state.contacts.filter(
+      contact => contact.id !== id,
+    );
+
+    this.setState({
+      contacts: [...newContacts],
+    });
+  };
+
   render() {
     const { contacts, name } = this.state;
     console.log(contacts);
@@ -47,7 +65,7 @@ class App extends Component {
       <>
         <h2 className="Title">Phonebook</h2>
 
-        <Form onSubmit={this.addContact}> </Form>
+        <Form onSubmit={this.addContact}></Form>
         {/* <InputForm
           id={this.nameInputId}
           name={name}
@@ -58,7 +76,11 @@ class App extends Component {
 
         <h2 className="Title">Contacts</h2>
 
-        <Contacts contacts={contacts}> name={name}</Contacts>
+        <Contacts
+          contacts={contacts}
+          name={name}
+          onSubmit={this.deleteContact}
+        ></Contacts>
       </>
     );
   }
