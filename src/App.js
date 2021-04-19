@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import InputForm from './components/InputForm';
 import Form from './components/Form';
 import Contacts from './components/Contacts';
+import Filter from './components/Filter';
 import { v4 as uuidv4 } from 'uuid';
 import './App.css';
 
@@ -57,6 +58,19 @@ class App extends Component {
     });
   };
 
+  onInputFilter = event => {
+    const filterInputValue = event.currentTarget.value;
+    console.log(filterInputValue);
+
+    // const newContacts = this.state.contacts.filter(
+    //   contact => contact.id !== id,
+    // );
+
+    // this.setState({
+    //   contacts: [...newContacts],
+    // });
+  };
+
   render() {
     const { contacts, name } = this.state;
     console.log(contacts);
@@ -75,6 +89,8 @@ class App extends Component {
         ></InputForm> */}
 
         <h2 className="Title">Contacts</h2>
+
+        <Filter onInputFilter={this.onInputFilter}></Filter>
 
         <Contacts
           contacts={contacts}
