@@ -64,11 +64,16 @@ class App extends Component {
     const filteredContacts = this.state.contacts.filter(contact =>
       contact.name.toLowerCase().includes(filterInputValue),
     );
-    console.log(filteredContacts);
 
-    this.setState({
-      contacts: [...filteredContacts],
-    });
+    this.setState(
+      filterInputValue
+        ? {
+            contacts: [...filteredContacts],
+          }
+        : {
+            contacts: [...this.state.contacts],
+          },
+    );
   };
 
   render() {
