@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import InputForm from './components/InputForm';
+import InputForm from './components/InputForm';
 import Form from './components/Form';
 import Contacts from './components/Contacts';
 import Filter from './components/Filter';
@@ -17,22 +17,6 @@ class App extends Component {
     name: '',
   };
 
-  // onInputValue = event => {
-  //   const { name, value } = event.currentTarget;
-  //   this.setState({ [name]: value });
-  // };
-
-  // onSubmit = event => {
-  //   // event.preventDefault();
-
-  //   this.onSubmit(this.state);
-  //   this.reset();
-  // };
-
-  // reset = () => {
-  //   this.setState({ name: '', number: '' });
-  // };
-
   addContact = ({ name, number }) => {
     const contact = {
       id: uuidv4(),
@@ -40,9 +24,16 @@ class App extends Component {
       number: number,
     };
 
-    this.setState(({ contacts }) => ({
-      contacts: [contact, ...contacts],
-    }));
+    if (name !== '' && number !== '') {
+      const namesArr = this.state.contacts.map(({ name }) => name);
+      if (namesArr.includes(contact.name)) {
+        alert('Contact already exist');
+        return;
+      }
+      this.setState(({ contacts }) => ({
+        contacts: [contact, ...contacts],
+      }));
+    }
   };
 
   deleteContact = event => {

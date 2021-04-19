@@ -16,12 +16,7 @@ class Form extends Component {
 
   onInputValue = event => {
     const { name, value } = event.currentTarget;
-
-    if (this.state.contacts.find(contact => contact.name !== value)) {
-      this.setState({ [name]: value });
-    } else {
-      alert(name, `is already in contacts`);
-    }
+    this.setState({ [name]: value });
   };
 
   onSubmit = event => {
