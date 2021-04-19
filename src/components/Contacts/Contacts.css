@@ -11,4 +11,9 @@
 
 .Item {
   margin-left: -140px;
+  margin-bottom: 10px;
+}
+
+.Name {
+  margin-right: 10px;
 }

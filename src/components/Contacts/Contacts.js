@@ -6,9 +6,10 @@ const Contacts = ({ contacts }) => {
   return (
     <section className="Contacts">
       <ul className="ContactsList">
-        {contacts.map(({ id, name }) => (
+        {contacts.map(({ id, name, number }) => (
           <li className="Item" key={id}>
-            <span>{name}</span>
+            <span className="Name">{name}:</span>
+            <span>{number}</span>
           </li>
         ))}
       </ul>
@@ -21,6 +22,7 @@ Contacts.protoTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
     }),
   ).isRequired,
 };

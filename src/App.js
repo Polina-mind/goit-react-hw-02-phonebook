@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import InputForm from './components/InputForm';
+// import InputForm from './components/InputForm';
+import Form from './components/Form';
 import Contacts from './components/Contacts';
+import { v4 as uuidv4 } from 'uuid';
 import './App.css';
 
 class App extends Component {
@@ -9,38 +11,50 @@ class App extends Component {
     name: '',
   };
 
-  onInputChange = event => {
-    const inputName = event.currentTarget.value;
-    this.setState({ name: inputName });
+  // onInputValue = event => {
+  //   const { name, value } = event.currentTarget;
+  //   this.setState({ [name]: value });
+  // };
 
-    // this.setState(prevState => {
-    //   return {
-    //     contacts: prevState.push({ id: 2, name: inputName }),
-    //     name: inputName,
-    //   };
-    // });
-  };
+  // onSubmit = event => {
+  //   // event.preventDefault();
 
-  onInputNumber = event => {
-    const inputNumber = event.currentTarget.value;
-    this.setState({ number: inputNumber });
+  //   this.onSubmit(this.state);
+  //   this.reset();
+  // };
+
+  // reset = () => {
+  //   this.setState({ name: '', number: '' });
+  // };
+
+  addContact = ({ name, number }) => {
+    const contact = {
+      id: uuidv4(),
+      name: name,
+      number: number,
+    };
+
+    this.setState(({ contacts }) => ({
+      contacts: [contact, ...contacts],
+    }));
   };
 
   render() {
-    const { contacts, name, number } = this.state;
-    console.log(this.state);
+    const { contacts, name } = this.state;
+    console.log(contacts);
 
     return (
       <>
         <h2 className="Title">Phonebook</h2>
 
-        <InputForm
+        <Form onSubmit={this.addContact}> </Form>
+        {/* <InputForm
+          id={this.nameInputId}
           name={name}
           number={number}
-          onInputChange={this.onInputChange}
-          onInputNumber={this.onInputNumber}
-          onInputName={this.onInputName}
-        ></InputForm>
+          onSubmit={this.onSubmit}
+          onInputValue={this.onInputValue}
+        ></InputForm> */}
 
         <h2 className="Title">Contacts</h2>
 

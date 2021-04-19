@@ -2,21 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './InputForm.css';
 
-const InputForm = ({
-  name,
-  number,
-  onInputName,
-  onInputChange,
-  onInputNumber,
-}) => {
+const InputForm = ({ id, name, number, onInputValue, onSubmit }) => {
   return (
     <form className="Form">
       <label className="Label">
         Name
         <input
+          id={id}
           className="Input"
           value={name}
-          onChange={onInputChange}
+          onChange={onInputValue}
           type="text"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -28,25 +23,26 @@ const InputForm = ({
       <label className="Label">
         Number
         <input
+          id={id}
           className="Input"
           value={number}
-          onChange={onInputNumber}
-          // type="text"
+          onChange={onInputValue}
+          type="text"
           name="number"
-          // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          // required
         />
       </label>
 
-      <button className="Button" type="submit" onClick={onInputName}>
+      <button className="Button" type="submit" onClick={onSubmit}>
         Add contact
       </button>
     </form>
   );
 };
 
-// InputForm.protoTypes = {
-//   props: PropTypes.string.isRequired,
-// };
+InputForm.protoTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+};
 
 export default InputForm;
