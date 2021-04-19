@@ -28,7 +28,6 @@ class Form extends Component {
     event.preventDefault();
 
     this.props.onSubmit(this.state);
-    // console.log(this.state);
     this.reset();
   };
 

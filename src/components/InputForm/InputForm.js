@@ -27,8 +27,11 @@ const InputForm = ({ id, name, number, onInputValue, onSubmit }) => {
           className="Input"
           value={number}
           onChange={onInputValue}
-          type="text"
+          type="tel"
           name="number"
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
+          required
         />
       </label>
 
