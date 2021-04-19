@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import InputForm from '../InputForm';
-// import { v4 as uuidv4 } from 'uuid';
 
 class Form extends Component {
   state = {

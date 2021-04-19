@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import InputForm from './components/InputForm';
 import Form from './components/Form';
 import Contacts from './components/Contacts';
 import Filter from './components/Filter';
@@ -51,24 +50,18 @@ class App extends Component {
 
   onInputFilter = event => {
     const filterInputValue = event.currentTarget.value;
+    const allContacts = this.state.contacts;
+    console.log(allContacts);
 
     const filteredContacts = this.state.contacts.filter(contact =>
       contact.name.toLowerCase().includes(filterInputValue),
     );
 
-    this.setState(
-      filterInputValue
-        ? {
-            contacts: [...filteredContacts],
-          }
-        : {
-            contacts: [...this.state.contacts],
-          },
-    );
+    this.setState({ filteredContacts: [...filteredContacts] });
   };
 
   render() {
-    const { contacts, name } = this.state;
+    const { contacts, filteredContacts, name } = this.state;
     console.log(contacts);
 
     return (
@@ -76,13 +69,6 @@ class App extends Component {
         <h2 className="Title">Phonebook</h2>
 
         <Form onSubmit={this.addContact}></Form>
-        {/* <InputForm
-          id={this.nameInputId}
-          name={name}
-          number={number}
-          onSubmit={this.onSubmit}
-          onInputValue={this.onInputValue}
-        ></InputForm> */}
 
         <h2 className="Title">Contacts</h2>
 
@@ -90,6 +76,7 @@ class App extends Component {
 
         <Contacts
           contacts={contacts}
+          filteredContacts={filteredContacts}
           name={name}
           onSubmit={this.deleteContact}
         ></Contacts>

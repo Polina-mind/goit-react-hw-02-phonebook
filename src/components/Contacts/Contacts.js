@@ -2,11 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Contacts.css';
 
-const Contacts = ({ contacts, onSubmit }) => {
+const Contacts = ({ contacts, filteredContacts, onSubmit }) => {
+  let renderContacts = [];
+  if (filteredContacts) {
+    renderContacts = filteredContacts;
+  } else {
+    renderContacts = contacts;
+  }
+
   return (
     <section className="Contacts">
       <ul className="ContactsList">
-        {contacts.map(({ id, name, number }) => (
+        {renderContacts.map(({ id, name, number }) => (
           <li className="Item" key={id}>
             <span className="Name">{name}:</span>
             <span className="Number">{number}</span>
@@ -27,6 +34,20 @@ const Contacts = ({ contacts, onSubmit }) => {
 
 Contacts.protoTypes = {
   contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  filteredContacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  renderContacts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
