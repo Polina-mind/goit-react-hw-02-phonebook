@@ -4,7 +4,7 @@ import './InputForm.css';
 
 const InputForm = ({ id, name, number, onInputValue, onSubmit }) => {
   return (
-    <form className="Form">
+    <form type="submit" onSubmit={onSubmit} className="Form">
       <label className="Label">
         Name
         <input
@@ -29,15 +29,13 @@ const InputForm = ({ id, name, number, onInputValue, onSubmit }) => {
           onChange={onInputValue}
           type="tel"
           name="number"
-          pattern="+?d{1,4}?[-.s]?(?d{1,3}?)?[-.s]?d{1,4}[-.s]?d{1,4}[-.s]?d{1,9}"
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
           required
         />
       </label>
 
-      <button className="Button" type="submit" onClick={onSubmit}>
-        Add contact
-      </button>
+      <button className="Button">Add contact</button>
     </form>
   );
 };
