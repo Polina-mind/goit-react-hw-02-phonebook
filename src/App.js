@@ -23,18 +23,7 @@ class App extends Component {
       number: number,
     };
 
-    // const nameRegexp =
-    //   "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$";
-    // const telRegexp =
-    //   '+?d{1,4}?[-.s]?(?d{1,3}?)?[-.s]?d{1,4}[-.s]?d{1,4}[-.s]?d{1,9}';
-
-    if (
-      name !== '' &&
-      number !== ''
-      // &&
-      // nameRegexp.test(name) &&
-      // telRegexp.test(number)
-    ) {
+    if (name !== '' && number !== '') {
       const namesArr = this.state.contacts.map(({ name }) => name);
       if (namesArr.includes(contact.name)) {
         alert('Contact already exist');
