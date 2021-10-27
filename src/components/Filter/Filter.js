@@ -1,30 +1,38 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './Filter.css';
 
-const Filter = ({ onInputFilter }) => {
-  return (
-    <div>
-      <p className="FindTitle">Find contacts by name</p>
+class Filter extends Component {
+  state = {
+    filter: '',
+  };
 
-      <input
-        className="InputFilter"
-        onChange={onInputFilter}
-        type="text"
-        name="filter"
-      />
-    </div>
-  );
+  handleChange = event => {
+    this.setState({ filter: event.target.value });
+    this.props.onInputFilter(event.target.value);
+  };
+
+  render() {
+    const { filter } = this.state;
+
+    return (
+      <div>
+        <p className="FindTitle">Find contacts by name</p>
+
+        <input
+          className="InputFilter"
+          value={filter}
+          onChange={this.handleChange}
+          type="text"
+          name="filter"
+        />
+      </div>
+    );
+  }
+}
+
+Filter.propTypes = {
+  onInputFilter: PropTypes.func.isRequired,
 };
-
-// Filter.protoTypes = {
-//     contacts: PropTypes.arrayOf(
-//       PropTypes.shape({
-//         id: PropTypes.string.isRequired,
-//         name: PropTypes.string.isRequired,
-//         number: PropTypes.string.isRequired,
-//       }),
-//     ).isRequired,
-// };
 
 export default Filter;
