@@ -38,9 +38,7 @@ class App extends Component {
     }
   };
 
-  deleteContact = event => {
-    event.preventDefault();
-    const id = event.currentTarget.id;
+  deleteContact = id => {
     const { contacts, filteredContacts } = this.state;
 
     this.setState({
